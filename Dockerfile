@@ -9,7 +9,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Build the application
-RUN mvn clean package
+RUN mvn package
 
 # Use a lightweight base image for the final container
 FROM openjdk:11-jre-slim
