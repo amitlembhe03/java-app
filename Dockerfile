@@ -1,5 +1,5 @@
 # Use a base image with Java and Maven pre-installed
-FROM maven:3.8.6-jdk-11
+FROM maven:3.8.6-jdk-11 AS builder
 
 # Set the working directory in the container
 WORKDIR /app
@@ -18,7 +18,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the compiled application from the builder stage
-COPY /java-project/target/myjavaapp-1.0-SNAPSHOT.jar ./app.jar
+COPY --from=builder  /java-project/target/myjavaapp-1.0-SNAPSHOT.jar ./app.jar
 
 # Specify the command to run on container start
 CMD ["java", "-jar", "app.jar"]
