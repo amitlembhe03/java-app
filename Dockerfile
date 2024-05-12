@@ -1,5 +1,5 @@
 # Use a base image with Java and Maven pre-installed
-FROM maven:3.9.6-jdk-11 AS builder
+FROM maven:3.8.4-openjdk-11 AS builder
 
 # Set the working directory in the container
 WORKDIR /app
@@ -12,7 +12,7 @@ COPY src ./src
 RUN mvn package
 
 # Use a lightweight base image for the final container
-#FROM openjdk:11-jre-slim
+FROM openjdk:11-jre-slim
 
 # Set the working directory in the container
 WORKDIR /app
