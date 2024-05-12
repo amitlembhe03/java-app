@@ -18,7 +18,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the compiled application from the builder stage
-COPY --from=builder /java-project/target/myjavaapp-1.0-SNAPSHOT.jar ./app.jar
+COPY /java-project/target/myjavaapp-1.0-SNAPSHOT.jar ./app.jar
 
 # Specify the command to run on container start
 CMD ["java", "-jar", "app.jar"]
